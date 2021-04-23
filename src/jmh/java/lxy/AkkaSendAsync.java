@@ -76,9 +76,16 @@ public class AkkaSendAsync {
     }
 
     @Benchmark
+    @Measurement(iterations = 1, batchSize = 1000)
+    public void testDefaultMailBox1000() {
+        work2.tell(hello, ActorRef.noSender());
+    }
+
+
+    @Benchmark
     @Measurement(iterations = 1, batchSize = 10000)
     public void testDefaultMailBox10000() {
-        work2.tell(hello, ActorRef.noSender());
+        work3.tell(hello, ActorRef.noSender());
     }
 
     @Benchmark
